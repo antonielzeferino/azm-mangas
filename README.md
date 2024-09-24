@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AZM-MANGAS
 
-## Getting Started
+📚 **AZM-MANGAS** é a sua plataforma dedicada a mangás, projetada para aprimorar minha experiência com requisições de APIs RESTful. Desenvolvido com **Next.js** e **TypeScript**, este projeto é uma excelente oportunidade de aprendizado e prática.
 
-First, run the development server:
+## 📖 Sobre o Projeto
+
+O **AZM-MANGAS** permite que você explore e interaja com uma rica biblioteca de mangás. Utilizando a API do **MangaDex**, a plataforma oferece uma experiência completa para os fãs de mangás.
+
+### Funcionalidades
+
+- **Exploração de Mangás**: Navegue por uma vasta coleção de títulos e descubra novas histórias.
+- **Informações Detalhadas**: Veja detalhes completos sobre cada mangá, incluindo sinopses e informações de publicação.
+- **Favoritos**: Marque seus mangás favoritos para acesso rápido e fácil.
+- **Leitura de Capítulos**: Leia alguns capítulos diretamente na plataforma.
+
+## 🛠️ Tecnologias Utilizadas
+
+- **Next.js**: Framework React para aplicações de página única.
+- **TypeScript**: Adiciona tipagem estática ao JavaScript para maior robustez.
+- **API MangaDex**: Fonte principal para dados de mangás.
+
+## 🚀 Começando
+
+Siga estas instruções para executar o projeto localmente:
+
+### 1. Clone o Repositório
+
+```bash
+git clone https://github.com/seu-usuario/azm-mangas.git
+cd azm-mangas
+```
+
+### 2. Instale as Dependências
+
+```bash
+npm install
+```
+
+### 3. Configure as Variáveis de Ambiente
+
+Crie um arquivo `.env.local` na raiz do projeto e adicione a seguinte variável:
+
+```plaintext
+NEXT_PUBLIC_MANGADEX_API_URL=https://api.mangadex.org
+```
+
+### 4. Execute o Projeto
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Acesse a aplicação em [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🤝 Contribua
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Se você deseja contribuir para o **AZM-MANGAS**, sinta-se à vontade para abrir uma **issue** ou enviar um **pull request**. Toda ajuda é bem-vinda!
