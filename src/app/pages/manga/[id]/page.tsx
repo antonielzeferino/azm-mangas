@@ -1,7 +1,7 @@
 'use client'
 
 import { fetchMangaById, getMangaCover } from "@/app/api/routes";
-import Header from "@/components/Header";
+import Nav from "@/components/Nav";
 import Loading from "@/components/Loading";
 import MangaCard from "@/components/MangaCard";
 import { MangaPageValues } from "@/types/mangaTypes";
@@ -20,7 +20,6 @@ function MangaPage() {
       setLoading(true);
       try {
         const fetchedManga = await fetchMangaById(id);
-        console.log(fetchedManga?.data.id);
         if (fetchedManga) {
           setManga(fetchedManga.data);
         }
@@ -32,6 +31,7 @@ function MangaPage() {
     };
 
     const getCover = async (id: string) => {
+      setLoading(true)
       try {
         const coverURL = await getMangaCover(id);
         if (coverURL) {
@@ -39,6 +39,8 @@ function MangaPage() {
         }
       } catch (error) {
         console.error("Erro ao buscar capa:", error);
+      } finally {
+        setLoading(false)
       }
     };
 
@@ -49,26 +51,57 @@ function MangaPage() {
   }, [id]);
 
   return (
-    <div className="px-4 py-2">
-      <Header />
+    <div className="px-4 ">
+      <Nav mangaID={id}/>
       {loading ? (
         <Loading />
       ) : manga ? (
-        <div className="md:flex">
-          <MangaCard 
+        <div className="flex flex-col md:flex-row md:space-x-6 items-center md:items-start md:justify-center">
+          <MangaCard
             coverUrl={coverURl}
             id={id}
-            title={manga.attributes.title?.altTitles?.en || 'manga cover'}
+            title={manga.attributes.title?.altTitles?.en || 'Manga Cover'}
+            cardClass="min-w-[280px] max-w-96 w-4/5 md:w-2/5"
           />
-          <div className="p-2">
-            <p>Título: {manga.attributes?.title?.en || 'Titulo não disponivel'}</p>
-            <p>Status: {manga.attributes.status || ' Status indisponivel'}</p>
-            <p>Ano de Lançamento: {manga.attributes.year || 'Valor Indisponivel'}</p>
-            <p>Descrição: {manga.attributes?.description?.en || 'Descrição não disponível'}</p>
+
+          <div className="p-4 w-full md:w-2/3 rounded-lg max-w-3xl">
+            <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4 text-center">
+              {manga.attributes?.title?.en || 'Title not available'}
+            </h2>
+
+            <div className="grid grid-cols-2 gap-4 max-w-xl">
+              <p className="text-gray-700 dark:text-gray-300">
+                <strong>Status:</strong> {manga.attributes.status || 'Status not available'}
+              </p>
+              <p className="text-gray-700 dark:text-gray-300">
+                <strong>Year:</strong> {manga.attributes.year || 'Year not available'}
+              </p>
+              <p className="text-gray-700 dark:text-gray-300">
+                <strong>Author:</strong> { 'Author not available'}
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-2 py-2">
+              <strong>Tags: </strong>
+              {manga.attributes.tags?.map((tag) => (
+                <div className="w-max px-2 bg-slate-600 rounded-full flex justify-center items-center" key={tag.id}>
+                  <p className="text-white text-xs opacity-70 hover:opacity-100 cursor-pointer">
+                    {tag.attributes.name.en}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-4">
+              <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">Description</h3>
+              <p className="text-gray-700 dark:text-gray-300 text-justify">
+                {manga.attributes?.description?.en || 'Description not available'}
+              </p>
+            </div>
           </div>
         </div>
       ) : (
-        <p>Mangá não encontrado</p>
+        <p className="text-center text-gray-700 dark:text-gray-300">Manga not found</p>
       )}
     </div>
   );
