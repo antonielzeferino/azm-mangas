@@ -9,8 +9,8 @@ export const searchManga = async (params: MangaListProps = {}): Promise<Manga[]>
     const queryParams: any = {
       limit: params.limit || 15,
       title: params.title || undefined,
-      '[tags]': params.tags,
-      '[sortBy]': params.sortBy || undefined, 
+      includedTags: params.tags || undefined,/* 
+      order: params.sortBy || { latestUploadedChapter: 'desc' } */
     };
   
     const response = await axios.get<MangaResponse>(`${baseUrl}/manga`, {
@@ -64,11 +64,9 @@ export const fetchMangaById = async (id: string) => {
     }
 
     const manga = response.data;
-    console.log(manga.data)
     return manga;
   } catch (error) {
     console.error('Erro:', error);
     return null;
   }
 };
-
