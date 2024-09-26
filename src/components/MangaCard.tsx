@@ -5,14 +5,19 @@ interface MangaCardProps {
   id: string;
   title: string;
   coverUrl: string | null;
+  cardClass?: string
 }
 
-const MangaCard: React.FC<MangaCardProps> = ({ id, title, coverUrl }) => {
+
+const MangaCard: React.FC<MangaCardProps> = ({ id, title, coverUrl, cardClass}) => {
+
+  const cardStyle = cardClass ? cardClass : 'w-[250px] h-[300px]';
+
   return (
-    <div key={id} className="flex-shrink-0">
+    <div key={id} className={`flex-shrink-0 ${cardStyle}`}>
       {coverUrl && (
         <Image
-          src={coverUrl}
+          src={coverUrl || 'nada'}
           alt={`Capa de ${title}`}
           width={250}
           height={300}

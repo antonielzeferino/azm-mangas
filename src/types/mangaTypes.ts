@@ -26,11 +26,12 @@ export interface CoverResponse {
   data: CoverData;
 }
 
-export interface MangaSearchParams {
+export interface MangaListProps {
   limit?: number;
   title?: string;
   tags?: string[];  
-  sortBy?: 'popularity'| 'newest'| 'highestRated'| 'mostRead'
+  sortBy?: 'Popularity'| 'Newest'| 'HighestRated'| 'MostRead';
+  cardClass?: string;
 }
 
 export interface MangaData {
@@ -76,4 +77,5 @@ export interface MangaPageValues {
       };
     }>; 
   };
+  relationships: MangaRelationship[];
 }
