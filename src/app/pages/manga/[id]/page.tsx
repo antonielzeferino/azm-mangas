@@ -52,7 +52,7 @@ function MangaPage() {
 
   return (
     <div className="px-4 ">
-      <Nav mangaID={id}/>
+      <Nav mangaID={id} />
       {loading ? (
         <Loading />
       ) : manga ? (
@@ -77,19 +77,22 @@ function MangaPage() {
                 <strong>Year:</strong> {manga.attributes.year || 'Year not available'}
               </p>
               <p className="text-gray-700 dark:text-gray-300">
-                <strong>Author:</strong> { 'Author not available'}
+                <strong>Author:</strong> {'Author not available'}
               </p>
             </div>
 
             <div className="flex flex-wrap gap-2 py-2">
-              <strong>Tags: </strong>
-              {manga.attributes.tags?.map((tag) => (
-                <div className="w-max px-2 bg-slate-600 rounded-full flex justify-center items-center" key={tag.id}>
-                  <p className="text-white text-xs opacity-70 hover:opacity-100 cursor-pointer">
-                    {tag.attributes.name.en}
-                  </p>
-                </div>
-              ))}
+              <strong className="text-sm md:text-md text-gray-700 dark:text-gray-300">Tags: </strong>
+                {manga?.attributes?.tags && manga.attributes.tags.length > 0 ? (
+                  manga.attributes.tags.map((tag, index) => (
+                    <span key={tag.id} className="cursor-pointer text-xs md:text-sm">
+                      {tag.attributes.name.en}
+                      {manga.attributes.tags && index < manga.attributes.tags.length - 1 ? ',' : '.'}
+                    </span>
+                  ))
+                ) : (
+                  <span>No tags available</span>
+                )}
             </div>
 
             <div className="mt-4">

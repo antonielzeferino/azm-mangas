@@ -55,6 +55,7 @@ function Nav({ mangaID }: NavProps) {
             alt="save icon"
             width={40}
             height={40}
+            priority
             className={`transition-transform duration-300 ${!isSaved && "dark:filter dark:invert dark:sepia dark:saturate-100"
               }`}
           />
