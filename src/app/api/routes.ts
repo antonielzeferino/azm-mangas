@@ -70,3 +70,19 @@ export const fetchMangaById = async (id: string) => {
     return null;
   }
 };
+
+export const getMangaVolumes = async (mangaID: string) => {
+  try {
+    const response = (await axios.get<any>(`${baseUrl}/manga/${mangaID}/aggregate`));
+
+    if (response.status !== 200) {
+      throw new Error('Erro ao buscar o capitulo');
+    }
+
+    const volumes = response.data.volumes
+    return volumes;
+  } catch (error) {
+    console.error('Erro:', error);
+    return null;
+  }
+}
