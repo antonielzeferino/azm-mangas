@@ -11,7 +11,7 @@ interface MangaCardProps {
 
 const MangaCard: React.FC<MangaCardProps> = ({ id, title, coverUrl, cardClass}) => {
 
-  const cardStyle = cardClass ? cardClass : 'w-[250px] h-[300px]';
+  const cardStyle = cardClass ? cardClass : 'w-[150px] h-[220px] md:w-[250px] md:h-[300px]';
 
   return (
     <div key={id} className={`flex-shrink-0 ${cardStyle}`}>

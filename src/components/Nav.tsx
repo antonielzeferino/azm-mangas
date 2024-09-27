@@ -15,7 +15,6 @@ function Nav({ mangaID }: NavProps) {
 
   useEffect(() => {
     const favMangas = localStorage.getItem("favMangas");
-    console.log(favMangas)
     if (favMangas && mangaID && favMangas.includes(mangaID)) {
       setIsSaved(true);
     }
@@ -46,7 +45,7 @@ function Nav({ mangaID }: NavProps) {
   };
 
   return (
-    <nav className="flex justify-between py-2">
+    <nav className="flex justify-between p-2">
       <button onClick={handleBackClick}>{'<'} Back</button>
       {pathName.includes("/pages/manga") && (
         <button onClick={handleSaveClick}>

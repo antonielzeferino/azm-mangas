@@ -19,7 +19,7 @@ const MangaList = async (params: MangaListProps = {}) => {
           mangaList.map(async ({ id, title }) => {
             const coverUrl = await getMangaCover(id);
             return (
-              <Link key={id} href={`/pages/manga/${id}`} className="flex-shrink-0 w-[250px]">
+              <Link key={id} href={`/pages/manga/${id}`} className="flex-shrink-0 w-auto">
                 <MangaCard id={id} title={title} coverUrl={coverUrl} cardClass={params.cardClass} />
               </Link>
             );
