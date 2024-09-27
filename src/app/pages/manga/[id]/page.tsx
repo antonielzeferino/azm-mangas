@@ -68,7 +68,7 @@ function MangaPage() {
   }, [id]);
 
   return (
-    <div className="">
+    <div>
       <Nav mangaID={id} />
       {loading ? (
         <Loading />

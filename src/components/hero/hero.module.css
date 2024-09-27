@@ -1,0 +1,20 @@
+.heroH1, .heroH2 {
+  position: relative;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.5); 
+  color: white;
+  -webkit-background-clip: text;
+  background-clip: text; 
+  color: transparent;
+  text-shadow: 2px 2px 1px rgba(255, 255, 255, 0.8); 
+}
+
+.fadeIn {
+  opacity: 1;
+  transition: opacity 1s ease-in;
+}
+
+.fadeOut {
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}

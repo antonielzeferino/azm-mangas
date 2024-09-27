@@ -13,20 +13,25 @@ const MangaList = async (params: MangaListProps = {}) => {
   });
 
   return (
-    <div className="flex space-x-4 overflow-x-scroll p-4 bg-background">
+    <div className="flex space-x-4 overflow-x-scroll bg-background">
       {Array.isArray(mangaList) && mangaList.length > 0 ? (
         await Promise.all(
           mangaList.map(async ({ id, title }) => {
             const coverUrl = await getMangaCover(id);
             return (
               <Link key={id} href={`/pages/manga/${id}`} className="flex-shrink-0 w-auto">
-                <MangaCard id={id} title={title} coverUrl={coverUrl} cardClass={params.cardClass} />
+                <MangaCard 
+                  id={id} 
+                  title={title} 
+                  coverUrl={coverUrl} 
+                  cardClass={params.cardClass} 
+                />
               </Link>
             );
           })
         )
       ) : (
-        <span>Erro ao carregar a lista de mangás</span>
+        <span>Error loading the manga list</span>
       )}
     </div>
   );

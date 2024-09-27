@@ -8,7 +8,7 @@ interface NavProps {
   mangaID?: string;
 }
 
-function Nav({ mangaID }: NavProps) {
+const Nav = ({ mangaID }: NavProps) => {
   const router = useRouter();
   const pathName = usePathname();
   const [isSaved, setIsSaved] = useState(false);
