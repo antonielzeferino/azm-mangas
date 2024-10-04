@@ -34,6 +34,14 @@ export interface MangaListProps {
   cardClass?: string;
 }
 
+export interface QueryProps {
+  limit?: number;
+  title?: string;
+  includedTags?: string[];  /* 
+  sortBy?: 'Popularity'| 'Newest'| 'HighestRated'| 'MostRead';
+  cardClass?: string; */
+}
+
 export interface MangaData {
   id: string;
   attributes: MangaAttibutes;

@@ -1,4 +1,4 @@
-import { Manga, MangaResponse, CoverResponse, MangaRelationship, MangaListProps, MangaData, Volume, ChapterResponse } from '@/types/mangaTypes';
+import { Manga, MangaResponse, CoverResponse, MangaRelationship, MangaListProps, MangaData, QueryProps } from '@/types/mangaTypes';
 import axios from 'axios';
 
 export const baseUrl = 'https://api.mangadex.org';
@@ -6,7 +6,7 @@ const uploadUrl = 'https://uploads.mangadex.org';
 
 export const searchManga = async (params: MangaListProps = {}): Promise<Manga[]> => {
   try {
-    const queryParams: any = {
+    const queryParams: QueryProps = {
       limit: params.limit || 15,
       title: params.title || undefined,
       includedTags: params.tags || undefined,/* 
