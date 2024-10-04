@@ -22,7 +22,7 @@ const MangaCard: React.FC<MangaCardProps> = ({ id, title, coverUrl, cardClass}) 
           width={250}
           height={300}
           priority
-          className="object-cover w-full h-full rounded-lg shadow-lg"
+          className="object-cover w-full h-full rounded-lg shadow-lg max-h-[80vh]"
         />
       )}
     </div>

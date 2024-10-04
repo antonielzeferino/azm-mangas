@@ -1,4 +1,4 @@
-import { Manga, MangaResponse, CoverResponse, MangaRelationship, MangaListProps, MangaData } from '@/types/mangaTypes';
+import { Manga, MangaResponse, CoverResponse, MangaRelationship, MangaListProps, MangaData, Volume, ChapterResponse } from '@/types/mangaTypes';
 import axios from 'axios';
 
 export const baseUrl = 'https://api.mangadex.org';
@@ -70,19 +70,3 @@ export const fetchMangaById = async (id: string) => {
     return null;
   }
 };
-
-export const getMangaVolumes = async (mangaID: string) => {
-  try {
-    const response = (await axios.get<any>(`${baseUrl}/manga/${mangaID}/aggregate`));
-
-    if (response.status !== 200) {
-      throw new Error('Erro ao buscar o capitulo');
-    }
-
-    const volumes = response.data.volumes
-    return volumes;
-  } catch (error) {
-    console.error('Erro:', error);
-    return null;
-  }
-}

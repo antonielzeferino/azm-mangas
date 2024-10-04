@@ -1,31 +1,31 @@
+'use client'
+
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import SaveIcon from "@/public/favorite-icon.png";
 import SavedIcon from "@/public/favorited-icon.png";
 
 interface NavProps {
   mangaID?: string;
+  pageType: 'home' | 'manga' | 'favorites';
 }
 
-const Nav = ({ mangaID }: NavProps) => {
+const Nav = ({ mangaID, pageType }: NavProps) => {
   const router = useRouter();
-  const pathName = usePathname();
   const [isSaved, setIsSaved] = useState(false);
 
   useEffect(() => {
-    const favMangas = localStorage.getItem("favMangas");
-    if (favMangas && mangaID && favMangas.includes(mangaID)) {
-      setIsSaved(true);
+    if (mangaID) {
+      const favMangas = localStorage.getItem("favMangas");
+      if (favMangas && favMangas.includes(mangaID)) {
+        setIsSaved(true);
+      }
     }
   }, [mangaID]);
 
   const handleBackClick = () => {
-    try {
-      router.back();
-    } catch (error) {
-      router.push('/')
-    }
+    router.back();
   };
 
   const handleSaveClick = () => {
@@ -44,24 +44,55 @@ const Nav = ({ mangaID }: NavProps) => {
     setIsSaved(!isSaved);
   };
 
+  const handleNavigateToFavorites = () => {
+    router.push('/pages/mangaList');
+  };
+
   return (
-    <nav className="flex justify-between p-2">
-      <button onClick={handleBackClick}>{'<'} Back</button>
-      {pathName.includes("/pages/manga") && (
-        <button onClick={handleSaveClick}>
+    <nav className="flex justify-between p-2 w-full">
+      {pageType === 'manga' && (
+        <>
+          <button onClick={handleBackClick}>
+            <span className="text-lg">{"< Back"}</span>
+          </button>
+          <button onClick={handleSaveClick}>
+            <Image
+              src={isSaved ? SavedIcon : SaveIcon}
+              alt="save icon"
+              width={40}
+              height={40}
+              priority
+              className={`transition-transform duration-300 ${!isSaved && "dark:filter dark:invert dark:sepia dark:saturate-100"
+                }`}
+            />
+          </button>
+        </>
+      )}
+
+      {pageType === 'home' && (
+        <button
+          onClick={handleNavigateToFavorites}
+          className="z-10 w-full flex justify-end gap-3 items-center"
+        >
+          <span className="text-white" >Favoritos</span>
           <Image
-            src={isSaved ? SavedIcon : SaveIcon}
-            alt="save icon"
-            width={40}
-            height={40}
+            src={SaveIcon}
+            alt="Go to Favorites"
+            width={30}
+            height={30}
             priority
-            className={`transition-transform duration-300 ${!isSaved && "dark:filter dark:invert dark:sepia dark:saturate-100"
-              }`}
+            className=" bg-white bg-opacity-10 rounded-lg"
           />
+        </button>
+      )}
+
+      {pageType === 'favorites' && (
+        <button onClick={handleBackClick}>
+          <span className="text-lg">{"< Back"}</span>
         </button>
       )}
     </nav>
   );
-}
+};
 
 export default Nav;

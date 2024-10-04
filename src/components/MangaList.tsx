@@ -13,7 +13,7 @@ const MangaList = async (params: MangaListProps = {}) => {
   });
 
   return (
-    <div className="flex space-x-4 overflow-x-scroll bg-background">
+    <div className="flex space-x-4 py-2 overflow-x-scroll bg-background">
       {Array.isArray(mangaList) && mangaList.length > 0 ? (
         await Promise.all(
           mangaList.map(async ({ id, title }) => {

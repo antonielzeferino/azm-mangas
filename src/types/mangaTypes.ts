@@ -79,3 +79,38 @@ export interface MangaPageValues {
   };
   relationships: MangaRelationship[];
 }
+
+
+export interface Volume {
+  volume: string;
+  count: number;
+  chapters: Record<string, ChapterData>;
+}
+
+
+export interface ChapterAttributes {
+  title: string;
+  volume: string | null;
+  chapter: string;
+  pages: number;
+  translatedLanguage: string;
+  uploader: string;
+  externalUrl: string | null;
+  version: number;
+  createdAt: string;
+  updatedAt: string;
+  publishAt: string;
+  readableAt: string;
+}
+
+export interface ChapterData {
+  id: string;
+  type: string;
+  attributes: ChapterAttributes;
+}
+
+export interface ChapterResponse {
+  result: string;
+  response: string;
+  data: ChapterData;
+}

@@ -6,42 +6,46 @@ import Image from "next/image";
 import style from "./hero.module.css";
 
 const Hero = () => {
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [currentIndex, setCurrentIndex] = useState<number>(3);
   const [fade, setFade] = useState<boolean>(true);
+  const [isFading, setIsFading] = useState<boolean>(false);
+
+  const changeImage = () => {
+    if (isFading) return; 
+
+    setIsFading(true); 
+    setFade(false); 
+
+    setTimeout(() => {
+      let newIndex;
+      do {
+        newIndex = Math.floor(Math.random() * heroData.length);
+      } while (newIndex === currentIndex);
+
+      setCurrentIndex(newIndex); 
+      setFade(true); 
+      setIsFading(false);
+    }, 700);
+  };
 
   useEffect(() => {
-    const randomIndex = Math.floor(Math.random() * heroData.length);
-    setCurrentIndex(randomIndex);
-
-    const interval = setInterval(() => {
-      setFade(false);
-
-      setTimeout(() => {
-        let newIndex;
-        do {
-          newIndex = Math.floor(Math.random() * heroData.length);
-        } while (newIndex === currentIndex);
-        
-        setCurrentIndex(newIndex);
-        setFade(true);
-      }, 1000);
-
-    }, 30 * 1000);
-
+    const interval = setInterval(changeImage, 5 * 60 * 1000); 
     return () => clearInterval(interval);
-  }, [currentIndex]);
+  }, []); 
 
   return (
-    <div className="w-full h-[25vh] md:h-[70vh] relative overflow-hidden bg-gray-400">
+    <div
+      className="w-full h-[25vh] md:h-[70vh] absolute overflow-hidden bg-gray-400 border-b-4 border-foreground"
+      onDoubleClick={changeImage} 
+    >
       <Image
         src={heroData[currentIndex].src}
         alt={heroData[currentIndex].alt}
         layout="fill"
-        objectFit="cover"
         priority
-        className={`${fade ? style.fadeIn : style.fadeOut}`}
+        className={`${fade ? style.fadeIn : style.fadeOut} object-fill`}
       />
-      <div className="relative top-7 left-2 md:top-[30%] md:left-20">
+      <div className="w-full h-full flex justify-center items-center md:items-start md:ps-[12%] flex-col">
         <h1 className={`${style.heroH1} text-2xl md:text-7xl`}>AZM MANGAS</h1>
         <h2 className={`${style.heroH2} text-md md:text-3xl`}>
           Discover a new world of entertainment
