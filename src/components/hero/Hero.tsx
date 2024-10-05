@@ -25,7 +25,7 @@ const Hero = () => {
       setCurrentIndex(newIndex); 
       setFade(true); 
       setIsFading(false);
-    }, 700);
+    }, 1000);
   };
 
   useEffect(() => {

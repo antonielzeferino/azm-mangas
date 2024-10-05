@@ -11,7 +11,6 @@ O **AZM-MANGAS** permite que você explore e interaja com uma rica biblioteca de
 - **Exploração de Mangás**: Navegue por uma vasta coleção de títulos e descubra novas histórias.
 - **Informações Detalhadas**: Veja detalhes completos sobre cada mangá, incluindo sinopses e informações de publicação.
 - **Favoritos**: Marque seus mangás favoritos para acesso rápido e fácil.
-- **Leitura de Capítulos**: Leia alguns capítulos diretamente na plataforma.
 
 ## 🛠️ Tecnologias Utilizadas
 
