@@ -45,8 +45,8 @@ const Hero = () => {
         priority
         className={`${fade ? style.fadeIn : style.fadeOut} object-fill`}
       />
-      <div className="w-full h-full flex justify-center items-center md:items-start md:ps-[12%] flex-col">
-        <h1 className={`${style.heroH1} text-2xl md:text-7xl`}>AZM MANGAS</h1>
+      <div className="w-max h-full flex justify-center items-start m-auto md:ps-[12%] md:m-0 flex-col">
+        <h1 className={`${style.heroH1} text-3xl md:text-7xl`}>AZM MANGAS</h1>
         <h2 className={`${style.heroH2} text-md md:text-3xl`}>
           Discover a new world of entertainment
         </h2>

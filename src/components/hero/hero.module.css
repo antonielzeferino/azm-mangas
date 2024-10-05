@@ -6,7 +6,7 @@
   -webkit-background-clip: text;
   background-clip: text; 
   color: transparent;
-  text-shadow: 2px 2px 1px rgba(255, 255, 255, 0.8); 
+  text-shadow: 2px 2px 1px rgba(255, 255, 255, 1); 
 }
 
 .fadeIn {
